@@ -53,7 +53,6 @@ public class ModelManager implements Model {
             filteredStudents = new FilteredList<>(this.teachBook.getStudentListOfClass(currentlySelectedClassIndex));
         }
 
-
     }
 
     public ModelManager() {
@@ -195,13 +194,17 @@ public class ModelManager implements Model {
     @Override
     public void updateCurrentlySelectedClass(GeneralIndex newClassIndex) {
         currentlySelectedClassIndex = newClassIndex;
-        currentlySelectedClass = teachBook.getClassAtIndex(newClassIndex);
+        if (!currentlySelectedClassIndex.equals(INDEX_NO_CLASS)) {
+            currentlySelectedClass = teachBook.getClassAtIndex(newClassIndex);
+        }
         updateSourceOfFilteredStudentList();
     }
 
     private void updateSourceOfFilteredStudentList() {
         if (currentlySelectedClassIndex.equals(INDEX_LIST_ALL)) {
             filteredStudents = new FilteredList<>(this.teachBook.getStudentList()); // this is to "list all"
+        } else if (currentlySelectedClassIndex.equals(INDEX_NO_CLASS)) {
+            filteredStudents = new FilteredList<>(FXCollections.observableArrayList());
         } else {
             filteredStudents = new FilteredList<>(this.teachBook.getStudentListOfClass(currentlySelectedClassIndex));
         }
