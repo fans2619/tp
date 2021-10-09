@@ -31,7 +31,7 @@ public class ModelManager implements Model {
     private final TeachBook teachBook;
     private final UserPrefs userPrefs;
     private FilteredList<Student> filteredStudents;
-    private GeneralIndex currentlySelectedClassIndex;
+    public GeneralIndex currentlySelectedClassIndex;
 
 
     /**
@@ -108,6 +108,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public GeneralIndex getCurrentlySelectedClassIndex() {
+        return currentlySelectedClassIndex;
+    }
+
+    @Override
     public boolean hasStudent(Student student) {
         requireNonNull(student);
         return teachBook.hasStudent(student);
@@ -122,9 +127,7 @@ public class ModelManager implements Model {
     @Override
     public void addClass(Class toAdd) {
         teachBook.addClass(toAdd);
-        if (currentlySelectedClassIndex.equals(INDEX_NO_CLASS)) {
-            updateCurrentlySelectedClass(INDEX_DEFAULT_INITIAL_CLASS);
-        }
+        updateCurrentlySelectedClass(GeneralIndex.fromOneBased(teachBook.getClassList().size()));
     }
 
     @Override
@@ -134,7 +137,7 @@ public class ModelManager implements Model {
 
     @Override
     public void addStudent(Student student) {
-        teachBook.addStudent(student);
+        // teachBook.addStudent(student);
         currentlySelectedClass.addStudent(student);
         updateFilteredStudentList(PREDICATE_SHOW_ALL_PERSONS);
     }

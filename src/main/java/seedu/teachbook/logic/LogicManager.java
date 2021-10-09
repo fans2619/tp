@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.teachbook.commons.core.GuiSettings;
 import seedu.teachbook.commons.core.LogsCenter;
+import seedu.teachbook.commons.core.index.GeneralIndex;
 import seedu.teachbook.logic.commands.Command;
 import seedu.teachbook.logic.commands.CommandResult;
 import seedu.teachbook.logic.commands.exceptions.CommandException;
@@ -58,6 +59,11 @@ public class LogicManager implements Logic {
     @Override
     public ReadOnlyTeachBook getTeachBook() {
         return model.getTeachBook();
+    }
+
+    @Override
+    public GeneralIndex getCurrentlySelectedClassIndex() {
+        return model.getCurrentlySelectedClassIndex();
     }
 
     @Override

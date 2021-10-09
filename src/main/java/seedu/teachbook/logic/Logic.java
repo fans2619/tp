@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 import javafx.collections.ObservableList;
 import seedu.teachbook.commons.core.GuiSettings;
+import seedu.teachbook.commons.core.index.GeneralIndex;
 import seedu.teachbook.logic.commands.CommandResult;
 import seedu.teachbook.logic.commands.exceptions.CommandException;
 import seedu.teachbook.logic.parser.exceptions.ParseException;
@@ -32,12 +33,12 @@ public interface Logic {
      */
     ReadOnlyTeachBook getTeachBook();
 
+    GeneralIndex getCurrentlySelectedClassIndex();
+
     /**
      * Returns an unmodifiable view of the filtered list of persons
      */
     ObservableList<Student> getFilteredPersonList();
-
-//    ObservableList<Class> getFilteredClassList();
 
     ObservableList<Class> getUniqueClassList();
 

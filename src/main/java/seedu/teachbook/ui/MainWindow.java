@@ -1,5 +1,7 @@
 package seedu.teachbook.ui;
 
+import static seedu.teachbook.commons.core.index.DefaultIndices.INDEX_NO_CLASS;
+
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.teachbook.commons.core.GuiSettings;
 import seedu.teachbook.commons.core.LogsCenter;
+import seedu.teachbook.commons.core.index.GeneralIndex;
 import seedu.teachbook.logic.Logic;
 import seedu.teachbook.logic.commands.CommandResult;
 import seedu.teachbook.logic.commands.exceptions.CommandException;
@@ -117,8 +120,10 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        classListPanel = new ClassListPanel(logic.getUniqueClassList()); // TODO: change UI, highlight selected class
+        classListPanel = new ClassListPanel(logic.getUniqueClassList());
         classListPanelPlaceholder.getChildren().add(classListPanel.getRoot());
+
+        updateClassListPanel();
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -130,9 +135,16 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
-    void updateFilteredStudentList() {
+    void updateStudentListPanel() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
+    void updateClassListPanel() {
+        GeneralIndex newSelectedClassIndex = logic.getCurrentlySelectedClassIndex();
+        if (!newSelectedClassIndex.equals(INDEX_NO_CLASS)) {
+            classListPanel.reload(newSelectedClassIndex);
+        }
     }
 
     /**
@@ -164,7 +176,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     public void handleSelectClass() {
-        updateFilteredStudentList();
+        updateStudentListPanel();
+        updateClassListPanel(); // TODO: modify Command Result to separate update student and class list panel
     }
 
     /**

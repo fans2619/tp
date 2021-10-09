@@ -56,6 +56,8 @@ public interface Model {
     /** Returns the AddressBook */
     ReadOnlyTeachBook getTeachBook();
 
+    GeneralIndex getCurrentlySelectedClassIndex();
+
     /**
      * Returns true if a student with the same identity as {@code student} exists in the teachbook book.
      */

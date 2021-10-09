@@ -44,7 +44,7 @@ public class AddClassCommand extends Command {
         }
 
         model.addClass(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), false, false, true);
     }
 
     @Override
