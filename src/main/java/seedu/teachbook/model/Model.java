@@ -68,6 +68,12 @@ public interface Model {
      */
     boolean hasClass(Class classObj);
 
+    /**
+     * Deletes the given class.
+     * The class must exist in the teachbook book.
+     */
+    void deleteClass(Class target);
+
     void addClass(Class toAdd);
 
     /**

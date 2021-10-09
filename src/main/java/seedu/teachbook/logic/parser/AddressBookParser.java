@@ -10,6 +10,7 @@ import seedu.teachbook.logic.commands.AddClassCommand;
 import seedu.teachbook.logic.commands.AddCommand;
 import seedu.teachbook.logic.commands.ClearCommand;
 import seedu.teachbook.logic.commands.Command;
+import seedu.teachbook.logic.commands.DeleteClassCommand;
 import seedu.teachbook.logic.commands.DeleteCommand;
 import seedu.teachbook.logic.commands.EditCommand;
 import seedu.teachbook.logic.commands.ExitCommand;
@@ -50,6 +51,9 @@ public class AddressBookParser {
 
         case AddClassCommand.COMMAND_WORD:
             return new AddClassCommandParser().parse(arguments);
+
+        case DeleteClassCommand.COMMAND_WORD:
+            return new DeleteClassCommandParser().parse(arguments);
 
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);

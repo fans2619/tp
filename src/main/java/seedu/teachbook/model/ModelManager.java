@@ -131,6 +131,16 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteClass(Class target) {
+        teachBook.removeClass(target);
+        if (teachBook.getClassList().size() == 0) {
+            updateCurrentlySelectedClass(INDEX_NO_CLASS);
+        } else {
+            updateCurrentlySelectedClass(INDEX_DEFAULT_INITIAL_CLASS);
+        }
+    }
+
+    @Override
     public void deleteStudent(Student target) {
         teachBook.removeStudent(target);
     }

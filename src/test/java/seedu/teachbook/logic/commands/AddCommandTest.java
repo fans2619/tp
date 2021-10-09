@@ -148,6 +148,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void deleteClass(Class toAdd) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteStudent(Student target) {
             throw new AssertionError("This method should not be called.");
         }
