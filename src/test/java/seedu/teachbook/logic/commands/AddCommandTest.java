@@ -128,6 +128,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public GeneralIndex getCurrentlySelectedClassIndex() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasStudent(Student student) {
             throw new AssertionError("This method should not be called.");
         }

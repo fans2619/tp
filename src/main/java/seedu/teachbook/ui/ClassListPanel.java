@@ -37,10 +37,10 @@ public class ClassListPanel extends UiPart<Region> {
     }
 
     public void reload(GeneralIndex newSelectedClassIndex) {
-        int N = newSelectedClassIndex.getZeroBased();
-        classListView.getSelectionModel().select(N);
-        classListView.getFocusModel().focus(N);
-        classListView.scrollTo(N);
+        int n = newSelectedClassIndex.getZeroBased();
+        classListView.getSelectionModel().select(n);
+        classListView.getFocusModel().focus(n);
+        classListView.scrollTo(n);
     }
 
     /**

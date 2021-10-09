@@ -31,7 +31,7 @@ public class ModelManager implements Model {
     private final TeachBook teachBook;
     private final UserPrefs userPrefs;
     private FilteredList<Student> filteredStudents;
-    public GeneralIndex currentlySelectedClassIndex;
+    private GeneralIndex currentlySelectedClassIndex;
 
 
     /**
